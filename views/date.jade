@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+	script(src='/socket.io/socket.io.js')
+	script(src='/javascripts/client.js')
+	script(src='/javascripts/kifu.js')
+	script(src='/javascripts/jquery_shogi_board.js')
+
+	h1= title
+	hr
+
+	#left-box
+		h3 検索タグ
+		each val in date
+			p
+				a(href="#" class=type)= val
+
+	#center-box
+		h3 棋譜一覧
+		#kifu-list
+
+	#right-box
+		h3 棋譜詳細
+		#board

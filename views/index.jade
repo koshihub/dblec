@@ -1,6 +1,14 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  DBlec test
+	h1= title
+	hr
+	p
+		a(href="./date") 日付検索
+	p
+		a(href="./first") 先手番検索
+	p
+		a(href="./second") 後手番検索
+	p
+		a(href="./match") 棋戦検索
+

@@ -7,6 +7,12 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var scraping = require('./routes/scraping');
+var date = require('./routes/date');
+var first = require('./routes/first');
+var second = require('./routes/second');
+var match = require('./routes/match');
+var start = require('./routes/start');
 
 var app = express();
 
@@ -23,6 +29,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/scraping', scraping);
+app.use('/date', date);
+app.use('/first', first);
+app.use('/second', second);
+app.use('/match', match);
+app.use('/start', start);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -55,5 +67,37 @@ app.use(function(err, req, res, next) {
     });
 });
 
+
+// database
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+var KifuSchema = new Schema({
+    date: String,
+    match: String,
+    first: String,
+    second: String,
+    moves: Array,
+    data: String,
+});
+var TagSchema = new Schema({
+    tag: { 
+        type: String, 
+        unique: true
+    }
+});
+var TagDateSchema = TagSchema;
+var TagMatchSchema = TagSchema;
+var TagFirstSchema = TagSchema;
+var TagSecondSchema = TagSchema;
+var TagMovesSchema = TagSchema;
+var TagStartSchema = TagSchema;
+mongoose.model('Kifu', KifuSchema);
+mongoose.model('TagDate', TagDateSchema);
+mongoose.model('TagMatch', TagMatchSchema);
+mongoose.model('TagFirst', TagFirstSchema);
+mongoose.model('TagSecond', TagSecondSchema);
+mongoose.model('TagMoves', TagMovesSchema);
+mongoose.model('TagStart', TagStartSchema);
+mongoose.connect('mongodb://localhost/dblec');
 
 module.exports = app;

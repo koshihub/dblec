@@ -4,5 +4,29 @@ body {
 }
 
 a {
+  cursor: pointer;
   color: #00B7FF;
+}
+
+div#left-box {
+	float: left;
+	width: 300px;
+	border: 1px solid #cccccc;
+	padding: 10px;
+	margin: 10px;
+}
+
+div#center-box {
+	float: left;
+	width: 400px;
+	border: 1px solid #cccccc;
+	padding: 10px;
+	margin: 10px;
+}
+
+div#right-box {
+	float: left;
+	border: 1px solid #cccccc;
+	padding: 10px;
+	margin: 10px;
 }
