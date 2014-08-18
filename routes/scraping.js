@@ -14,8 +14,8 @@ router.get('/', function(req, res) {
 
 	var url = "http://wiki.optus.nu/shogi/index.php?cmd=kif&cmds=displaytxt&kid=";
 
-	for (var kid = 1; kid <= 10; kid++) {
-
+	var from = 1, to = 10;
+	var _acc = function(kid) {
 		(function(_kid) {
 			client.fetch(url + "" + kid, {}, function (err, $, res) {
 				/*
@@ -90,7 +90,13 @@ router.get('/', function(req, res) {
 				});
 			});
 		})(kid);
-	}
+
+		if (kid <= to) {
+			setTimeout(_acc(kid+1), 100);
+		}
+	};
+
+	_acc(from);
 	
 	res.render('index', { title: 'Express' });
 });
