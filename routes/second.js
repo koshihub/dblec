@@ -6,7 +6,6 @@ var mongoose = require('mongoose');
 router.get('/', function(req, res) {
 	res.render('show', { 
 		title: '後手番検索',
-		list: arr,
 		type: "second"
 	});
 });

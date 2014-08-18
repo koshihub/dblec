@@ -13,13 +13,26 @@ block content
 	h1= title
 	hr
 
+	table.tbb
+		tr
+			td
+				a(href='/date') 日付
+			td
+				a(href='/match') 棋戦
+			td
+				a(href='/first') 先手
+			td
+				a(href='/second') 後手
+
 	#left-box
 		h3 検索タグ
+		.loader
 		#pager1
 		#tag-list
 
 	#center-box
 		h3 棋譜一覧
+		.loader
 		#pager2
 		#kifu-list
 

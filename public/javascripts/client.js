@@ -18,6 +18,7 @@ var isPager2Initialized = false;
 var currentTag;
 
 function getTags(skip) {
+	$("#left-box .loader").css("display", "inherit");
 	socket.emit("tag", {type: type, skip: skip}, function(res) {
 		$("#tag-list").css({display: "none"});
 		$("#tag-list").empty();
@@ -33,6 +34,7 @@ function getTags(skip) {
 			$("#tag-list").append(elm);
 		};
 		$("#tag-list").animate({ opacity: 'show' }, 'fast');
+		$("#left-box .loader").css("display", "none");
 
 		if(!isPager1Initialized) {
 			$("#pager1").pagination({
@@ -52,8 +54,10 @@ function getTags(skip) {
 }
 
 function searchKifu(skip) {
+	$("#center-box .loader").css("display", "inherit");
 	socket.emit("search", {type: type, tag: currentTag, skip: skip}, function(res) {
 		setList(res.list);
+		$("#center-box .loader").css("display", "none");
 
 		if(!isPager2Initialized) {
 			$("#pager2").pagination({

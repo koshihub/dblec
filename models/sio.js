@@ -8,8 +8,9 @@ function sio(server) {
 
   // Socket.IO
   var sio = socketio.listen(server);
+  //sio.set('transports', [ 'websocket' ]);
   sio.set('transports', [ 'websocket' ]);
-
+  
   // 接続
   sio.sockets.on('connection', function(socket) {
 
@@ -64,7 +65,7 @@ function sio(server) {
       if (query.type == "match") {
         q = {match: query.tag};
       }
-      
+
 
       var arr = [];
       var maxcount;
